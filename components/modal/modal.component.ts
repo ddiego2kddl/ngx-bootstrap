@@ -65,12 +65,13 @@ export class ModalDirective implements AfterViewInit, OnDestroy {
   // reference to backdrop component
   private backdrop: ComponentRef<ModalBackdropComponent>;
 
-  private timerHideModal: number = 0;
-  private timerRmBackDrop: number = 0;
+  private timerHideModal: any = 0;
+  private timerRmBackDrop: any = 0;
 
   private get document(): any {
     return this.componentsHelper.getDocument();
   };
+
 
   /** Host element manipulations */
   // @HostBinding(`class.${ClassName.IN}`) private _addClassIn:boolean;
@@ -93,8 +94,8 @@ export class ModalDirective implements AfterViewInit, OnDestroy {
   }
 
   public constructor(private element: ElementRef,
-                     private renderer: Renderer,
-                     private componentsHelper: ComponentsHelper) {
+    private renderer: Renderer,
+    private componentsHelper: ComponentsHelper) {
   }
 
   public ngOnDestroy(): any {
@@ -234,9 +235,9 @@ export class ModalDirective implements AfterViewInit, OnDestroy {
       this.removeBackdrop();
       this.backdrop = this.componentsHelper
         .appendNextToRoot(
-          ModalBackdropComponent,
-          ModalBackdropOptions,
-          new ModalBackdropOptions({animate: false}));
+        ModalBackdropComponent,
+        ModalBackdropOptions,
+        new ModalBackdropOptions({ animate: false }));
 
       if (this.isAnimated) {
         this.backdrop.instance.isAnimated = this.isAnimated;

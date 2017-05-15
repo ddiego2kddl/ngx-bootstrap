@@ -44,11 +44,11 @@ export class TooltipDirective {
   private visible: boolean = false;
   private tooltip: ComponentRef<any>;
 
-  private delayTimeoutId: number;
+  private delayTimeoutId: any;
 
   public constructor(viewContainerRef: ViewContainerRef,
-                     componentsHelper: ComponentsHelper,
-                     changeDetectorRef: ChangeDetectorRef) {
+    componentsHelper: ComponentsHelper,
+    changeDetectorRef: ChangeDetectorRef) {
     this.viewContainerRef = viewContainerRef;
     this.componentsHelper = componentsHelper;
     this.changeDetectorRef = changeDetectorRef;
@@ -81,7 +81,7 @@ export class TooltipDirective {
           .appendNextToRoot(TooltipContainerComponent, TooltipOptions, options);
       } else {
         let binding = ReflectiveInjector.resolve([
-          {provide: TooltipOptions, useValue: options}
+          { provide: TooltipOptions, useValue: options }
         ]);
         this.tooltip = this.componentsHelper
           .appendNextToLocation(TooltipContainerComponent, this.viewContainerRef, binding);
