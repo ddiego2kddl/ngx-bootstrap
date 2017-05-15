@@ -121,7 +121,9 @@ export class TypeaheadDirective implements OnInit {
   @HostListener('blur')
   public onBlur():void {
     if (this.container && !this.container.isFocused) {
-      this.hide();
+      setTimeout(function () {
+        this.hide();
+      }.bind(this));
     }
   }
 
