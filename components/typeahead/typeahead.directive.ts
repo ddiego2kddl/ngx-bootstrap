@@ -95,6 +95,15 @@ export class TypeaheadDirective implements OnInit {
         this.container.selectActiveMatch();
         return;
       }
+
+      if (e.keyCode === 37 || e.keyCode === 39) {
+        return;
+      }
+    }
+    else{
+      if (e.keyCode === 37 || e.keyCode === 39 || e.keyCode === 27) {
+        return;
+      }
     }
 
     // For `<input>`s, use the `value` property. For others that don't have a
